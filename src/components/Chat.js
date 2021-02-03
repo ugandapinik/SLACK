@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
@@ -11,18 +11,26 @@ import Message from './Message'
 
 function Chat() {
 
+    const chatRef = useRef(null)
     const roomId = useSelector(selectRoomId)
     const [roomDetails] = useDocument(
         roomId && db.collection("rooms").doc(roomId)
     )
 
-    const [roomMessages] = useCollection(
+    const [roomMessages, loading] = useCollection(
         roomId && db
                     .collection("rooms")
                     .doc(roomId)
                     .collection("messages")
                     .orderBy("timestamp", "asc")
     )
+
+
+    useEffect(() => {
+        chatRef?.current?.scrollIntoView({
+            behavior: "smooth"
+        })
+    }, [roomId, loading])
 
 
     return (
@@ -60,7 +68,7 @@ function Chat() {
                         )
                     })}
 
-                    <ChatBottom />
+                    <ChatBottom ref={chatRef} />
                 </ChatMessages>
 
 
@@ -129,5 +137,5 @@ const ChatMessages = styled.div``
 
 
 const ChatBottom = styled.div`
-    
+    padding-bottom: 100px;
 `
