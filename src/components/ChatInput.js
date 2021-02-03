@@ -7,7 +7,8 @@ import { db } from '../fireabase'
 function ChatInput({ channelName, channelId}) {
 
     const [input, setInput] = useState("")
-    console.log(channelId)
+  
+
     
     const sendMessage = (e) => {
         e.preventDefault()
@@ -38,7 +39,7 @@ function ChatInput({ channelName, channelId}) {
                 <input 
                     onChange={(e) => setInput(e.target.value)} 
                     value={input} 
-                    placeholder={`Mesage #ROOM`} />
+                    placeholder={`Mesage #${channelName}`} />
                 <Button type="submit" onClick={sendMessage}>SEND</Button>
             </form>
         </ChatInputContainer>
