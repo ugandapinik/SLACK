@@ -18,7 +18,7 @@ function SidebarOption({Icon, title, addChannelOption, id}) {
     }
 
     const selectChannel = () => {
-
+        // TODO useRedux
     }
 
 
@@ -63,9 +63,7 @@ const SidebarOptionContainer = styled.div`
 `
 
 
-
 const SidebarOptionChannel = styled.h3`
     padding: 10px 0;
     font-weight: 300;
-    
 `
