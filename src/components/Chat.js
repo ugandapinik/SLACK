@@ -1,13 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
+import StarBorderOutlinedIcon from '@material-ui/icons/StarBorderOutlined'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 
 function Chat() {
     return (
         <ChatContainer>
             <Header>
-                <HeaderLeft></HeaderLeft>
+                <HeaderLeft>
+                    <h4><strong># Room - Name</strong></h4>
+                    <StarBorderOutlinedIcon/>
+                </HeaderLeft>
 
-                <HeaderRight></HeaderRight>
+                <HeaderRight>
+                    <p>
+                        <InfoOutlinedIcon /> Details
+                    </p>
+                </HeaderRight>
             </Header>
         </ChatContainer>
     )
@@ -24,6 +33,10 @@ const ChatContainer = styled.div`
 `
 
 const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid lightgray;
 
 `
 
