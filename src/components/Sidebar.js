@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import SidebarOption from './SidebarOption'
 
@@ -16,7 +16,16 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import AddIcon from '@material-ui/icons/Add'
 
+
+import { db } from '../fireabase'
+import { useCollection } from 'react-firebase-hooks/firestore'
+
+
+
 function Sidebar() {
+
+    const [channels, loading, error] = useCollection(db.collection("rooms"))
+
     return (
         <SidebarContainer>
             <SidebarHeader>
@@ -48,6 +57,14 @@ function Sidebar() {
 
             <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel" />
 
+
+            {channels?.docs.map((doc) => (
+                <SidebarOption 
+                key={doc.id} 
+                id={doc.id}
+                addChannelOption
+                title={ doc.data().name } /> 
+            ))}
         </SidebarContainer>
     )
 }

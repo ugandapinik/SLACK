@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import { db } from '../fireabase'
 
 
-function SidebarOption({Icon, title, addChannelOption}) {
+
+function SidebarOption({Icon, title, addChannelOption, id}) {
+    
 
     const addChannel = () => {
-        const channelName = prompt('Please enter the channel name')
+        const channelName = prompt("Please enter the channel name")
         if (channelName){
-            db.collection('rooms')
+            db.collection("rooms")
             .add({
                 name: channelName,
             })
@@ -29,7 +31,7 @@ function SidebarOption({Icon, title, addChannelOption}) {
                 <h3>{ title }</h3>
             ) : (
                 <SidebarOptionChannel>
-                    <span>#</span> { title }
+                    <span>#</span> {title}
                 </SidebarOptionChannel>
             )}
         </SidebarOptionContainer>
@@ -62,4 +64,8 @@ const SidebarOptionContainer = styled.div`
 
 
 
-const SidebarOptionChannel = styled.div``
+const SidebarOptionChannel = styled.h3`
+    padding: 10px 0;
+    font-weight: 300;
+    
+`
