@@ -16,7 +16,6 @@ function Header() {
             </HeaderLeft>
 
 
-
             <HeaderSearch>
                 <SearchIcon />
                 <input placeholder="Search Slack" />
