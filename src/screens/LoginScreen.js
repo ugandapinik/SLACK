@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '@material-ui/core'
+import { auth, provider } from '../fireabase'
 
 function LoginScreen() {
     
@@ -8,6 +9,10 @@ function LoginScreen() {
         e.preventDefault()
         
         // login with google 
+        auth.signInWithPopup(provider)
+        .catch(error => {
+            alert(error.message)
+        })
     }
 
 
