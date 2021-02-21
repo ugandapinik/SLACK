@@ -42,4 +42,9 @@ const MessageInfo = styled.div`
         margin-left: 4px;
         font-size: 10px;
     }
+
+    > h4 > p {
+        font-weight: 300;
+        font-size: 14px;
+    }
 `
