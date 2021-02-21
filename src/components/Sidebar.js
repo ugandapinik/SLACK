@@ -17,13 +17,14 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import AddIcon from '@material-ui/icons/Add'
 
 
-import { db } from '../fireabase'
+import { auth, db } from '../fireabase'
 import { useCollection } from 'react-firebase-hooks/firestore'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 
 
 function Sidebar() {
-
+    const [user] = useAuthState(auth)
     const [channels, loading, error] = useCollection(db.collection("rooms"))
 
     return (
@@ -33,7 +34,7 @@ function Sidebar() {
                     <h2>SmartICE</h2>
                     <h3>
                         <FiberManualRecordIcon />
-                        Jewel Mahmud
+                        { user.displayName }
                     </h3>
                 </SidebarInfo>
 
